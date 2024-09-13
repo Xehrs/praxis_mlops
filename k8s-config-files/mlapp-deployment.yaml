@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mlapp-deployment
+  # labels:
+  #   app: nginx
+
+spec:
+  replicas: 2 # No. of Pods to be running always
+  selector:
+    matchLabels:
+      app: mlapp-pods
+  template:
+    metadata:
+      labels:
+        app: mlapp-pods
+    spec: # pod specification
+      containers:
+      - name: mlapp-container
+        #image: 195275638413.dkr.ecr.us-west-1.amazonaws.com/mlapp-ecr:latest  # If you are using AWS ECR
+        image: sherzahed/mlapp:latest # If you are using docker image
+        ports:
+          - containerPort: 80

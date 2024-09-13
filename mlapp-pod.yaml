@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+
+
+metadata:
+  name: predict_rental_mlapp
+
+
+spec:
+  containers:
+  - name: predict_rental_mlapp_container
+    #image: 195275638413.dkr.ecr.us-west-1.amazonaws.com/mlapp-ecr:latest  # If you are using AWS ECR
+    image: sherzahed/mlapp:latest # If you are using docker image
+    ports:
+    - containerPort: 80
